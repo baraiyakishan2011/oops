@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        class Library {
+            constructor() {
+                this.books = [];
+            }
+
+            addBook(title, author) {
+                this.books.push({ title, author });
+            }
+
+            removeBook(title) {
+                const bookIndex = this.books.findIndex((book) => book.title === title);
+                if (bookIndex !== -1) {
+                    this.books.splice(bookIndex, 1);
+                    return true; 
+                } else {
+                    return false;
+                }
+            }
+
+            displayBooks() {
+                console.log("Library books:");
+                this.books.forEach((book) => console.log(`B_Name => ${book.title}`));
+            }
+        }
+
+
+        const myLibrary = new Library();
+        myLibrary.addBook("The Great Gatsby");
+        myLibrary.addBook("To Kill a Mockingbird");
+        myLibrary.addBook("George Orwell");
+        myLibrary.addBook("Harper Lee");
+
+        myLibrary.displayBooks();
+
+        console.log("Removing Books : To Kill a Mockingbird");
+
+        if (myLibrary.removeBook("To Kill a Mockingbird")) {
+            console.log("Book removed successfully.");
+        } else {
+            console.log("Book not found.");
+        }
+
+        myLibrary.displayBooks();
+
+    </script>
+
+</body>
+</html>
